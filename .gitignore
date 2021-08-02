@@ -1,1 +1,5 @@
-.exe
+# Environment
+.vscode
+
+# Compiled files
+*.exe
