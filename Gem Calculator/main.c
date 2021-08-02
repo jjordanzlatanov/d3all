@@ -16,6 +16,7 @@ int main(){
     for(int i = 0; i < 5; i++){
         for(int j = 0; j < 5; j++){
             if(gem_type != j){
+                int essence = 0;
                 gem_sum[gem_type][gem_tier] += (gem_sum[gem_type][j] / 9) * 9;
             }
         }
