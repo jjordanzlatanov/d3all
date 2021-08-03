@@ -15,6 +15,8 @@ int main(){
 
     int total_gems[2] = {0, 0};
 
+    int leftover = 0;
+
     gems_needed[gems_tier] = amount_gems;
 
     for(int i = gems_tier - 1; i >= 0; i--){
@@ -27,10 +29,30 @@ int main(){
                 essence[i] += gems[j][i] / 9;
             }
         }
+
         total_gems[i] += gems[gems_type][i] + (essence[i] * 9);
     }
 
-    
+    if(total_gems[1] >= gems_needed[1]){
+        leftover = total_gems[1] - gems_needed[1];
+        essence[1] -= leftover / 9;
+
+        printf("%d Essence for Imperial\n", essence[1]);
+    }else{
+        total_gems[1] += total_gems[0] / 3;
+
+        if(total_gems[1] >= gems_needed[1]){
+            leftover = total_gems[1] - gems_needed[1];
+            essence[0] -= (leftover * 3) / 9;
+
+            printf("%d Essence for Marquise\n", essence[0]);
+            printf("%d Essence for Imperial\n", essence[1]);
+        }else{
+            printf("You need %d more Imperials or %d more Marquise", gems_needed[1] - (total_gems[1] - (total_gems[0] / 3)), (gems_needed[1] - total_gems[1]) * 3);
+        }
+    }
+
+
 
     return 0;
 }
