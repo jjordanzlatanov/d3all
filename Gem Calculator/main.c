@@ -1,15 +1,15 @@
 #include <stdio.h>
 
 int main(){
-    int amount_gems = 3; // How many gems you want?
+    int amount_gems = 1; // How many gems you want?
 
-    int gems_tier = 3; //  0 - Marquise; 1 - Imperial; 2 - Flawless Imperial; 3 - Royal; 4 - Flawless Royal
+    int gems_tier = 4; //  0 - Marquise; 1 - Imperial; 2 - Flawless Imperial; 3 - Royal; 4 - Flawless Royal
+
+    int gems_type = 2; //  0 - Topaz; 1 - Ruby; 2 - Emerald; 3 - Amethyst; 4 - Diamond
 
     int gems_needed[5];
 
-    int gems_type = 0; //  0 - Topaz; 1 - Ruby; 2 - Emerald; 3 - Amethyst; 4 - Diamond
-
-    int gems[5][2] = { {10, 10}, {20, 20}, {30, 30}, {40, 40}, {50, 50} }; // Input your amount of marquise and imperial gems
+    int gems[5][2] = { {0, 0}, {0, 0}, {1, 1}, {9, 0}, {80, 0} }; // Input your amount of marquise and imperial gems
 
     int essence[2] = {0, 0};
 
