@@ -2,4 +2,7 @@
 .vscode
 
 # Compiled files
-*.exe
+*.exeaccountseed.txt
+
+# GAM
+accountseed.txt
