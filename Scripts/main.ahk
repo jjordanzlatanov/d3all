@@ -67,16 +67,20 @@ XButton1::
         Click
         Sleep, 100
     }
+
+    Return
+
+attacking := False
+1::
+    attacking := !attacking
+
+    If (attacking) {
+        SetTimer, attack, 500
+    }Else{
+        SetTimer, attack, Off
+        Send, {ShiftUp}
+    }
     
-    Return
-
-WheelUp::
-    SetTimer, attack, 500    
-    Return
-
-WheelDown::
-    SetTimer, attack, Off
-    Send, {ShiftUp}
     Return
 
 attack:
