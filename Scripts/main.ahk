@@ -3,8 +3,6 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
-pressedEnter := False
-
 ; Disable script with Alt + `
 ^`::
     Suspend, Toggle
@@ -21,17 +19,18 @@ pressedEnter := False
     Reload
     Return
 
-; Salvage while holding Alt
-Alt::
-    pressedEnter := !pressedEnter
-    Click
-    Sleep, 100
-    Send, {Enter}
-    Return
-    
-Alt Up::
-    If (pressedEnter) {
-        pressedEnter := False
+#IfWinActive, Diablo III
+; Salvage while holding x
+x::
+    While (GetKeyState("x", "P")) {
+        Click
+        Send, {Enter}
+        Sleep, 100
+    }
+
+    PixelGetColor, color, 19, 770
+
+    If (color == 0x000000) {
         Send, {Enter}
     }
     Return
