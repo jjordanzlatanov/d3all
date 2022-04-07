@@ -21,7 +21,26 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 #IfWinActive, Diablo III
 ; Salvage while holding x
+; Coordinates
+; 19, 770 - Black background on chat scroll
+; 500, 500 - Salvage menu
+; 385, 290 - Salvage rares
+; 320, 290 - Salvage magics
+; 255, 290 - Salvage normals
+; 165, 290 - Activate salvaging of legendaries
 x::
+    MouseGetPos, initX, initY
+    Click, 500, 500
+    Send, {Enter}
+    Click, 385, 290
+    Send, {Enter}
+    Click, 320, 290
+    Send, {Enter}
+    Click, 255, 290
+    Send, {Enter}
+    Click, 165, 290
+    MouseMove, initX, initY
+
     While (GetKeyState("x", "P")) {
         Click
         Send, {Enter}
