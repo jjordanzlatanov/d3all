@@ -31,7 +31,6 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 x::
     MouseGetPos, initX, initY
     Click, 500, 500
-    Send, {Enter}
     Click, 385, 290
     Send, {Enter}
     Click, 320, 290
@@ -52,4 +51,35 @@ x::
     If (color == 0x000000) {
         Send, {Enter}
     }
+    Return
+
+XButton1::
+    While (GetKeyState("XButton1", "P")) {
+        Click Right
+        Sleep, 100
+    }
+
+    Return
+
+~Space::
+    While (GetKeyState("Space", "P")) {
+        Send, {ShiftUp}
+        Click
+        Sleep, 100
+    }
+    
+    Return
+
+WheelUp::
+    SetTimer, attack, 500    
+    Return
+
+WheelDown::
+    SetTimer, attack, Off
+    Send, {ShiftUp}
+    Return
+
+attack:
+    Send, asdf
+    Send, {ShiftDown}
     Return
