@@ -3,6 +3,9 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
+pressedEnter := False
+
+; Disable script with Alt + `
 ^`::
     Suspend, Toggle
     text := "Started Script"
@@ -11,17 +14,24 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
         text := "Stopped Script"
     }
 
-    MsgBox, , Main, %text%, 0.80
+    MsgBox, , Main, %text%, 0.60
     Return
 
 `::
     Reload
     Return
 
-1::   
-    Send, hi this
+; Salvage while holding Alt
+Alt::
+    pressedEnter := !pressedEnter
+    Click
+    Sleep, 100
+    Send, {Enter}
     Return
-
-1 Up::
-    Send, is a script
+    
+Alt Up::
+    If (pressedEnter) {
+        pressedEnter := False
+        Send, {Enter}
+    }
     Return
