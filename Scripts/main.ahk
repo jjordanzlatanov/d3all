@@ -3,6 +3,9 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
+picking := False
+attacking := False
+
 ; Disable script with Alt + `
 ^`::
     Suspend, Toggle
@@ -31,11 +34,15 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 x::
     MouseGetPos, initX, initY
     Click, 500, 500
+    Sleep, 100
     Click, 385, 290
+    Sleep, 100
     Send, {Enter}
     Click, 320, 290
+    Sleep, 100
     Send, {Enter}
     Click, 255, 290
+    Sleep, 100
     Send, {Enter}
     Click, 165, 290
     MouseMove, initX, initY
@@ -61,16 +68,21 @@ XButton1::
 
     Return
 
-~Space::
-    While (GetKeyState("Space", "P")) {
-        Send, {ShiftUp}
-        Click
-        Sleep, 100
-    }
-
+~v::
+    picking := !picking
     Return
 
-attacking := False
+~Space::
+    While (GetKeyState("Space", "P")) {
+        While (picking) {
+            Send, {ShiftUp}
+            Click
+            Sleep, 100
+        }
+    }
+    
+    Return
+
 1::
     attacking := !attacking
 
