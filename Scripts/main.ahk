@@ -74,7 +74,7 @@ XButton1::
 
 ~Space::
     While (GetKeyState("Space", "P")) {
-        While (picking) {
+        If (picking) {
             Send, {ShiftUp}
             Click
             Sleep, 100
